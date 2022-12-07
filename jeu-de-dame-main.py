@@ -42,5 +42,23 @@ def jeu_multi():
     print("#      Coming soon (2022)      #")
     print("################################")
     print()
+    
+def plateau():
+    mainList = []
+    secondList = []
+    black = "⛂"
+    white = "⛀"
+    king_black = "⛃"
+    king_white = "⛁"
+    for l in range(10):
+        for L in range(10):
+            if L % 2 == 0:
+                mainList.append("W")
+            else :
+                mainList.append("B")    
+        secondList.append(mainList)
+        mainList = []
+    print(secondList)
 
-menu()
+#menu()
+plateau()
