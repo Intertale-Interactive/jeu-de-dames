@@ -33,7 +33,7 @@ listee = [blanc, noirRempli, blanc, noirRempli, blanc, noirRempli, blanc, noirRe
         blancRempli, blanc, blancRempli, blanc, blancRempli, blanc, blancRempli, blanc, blancRempli, blanc,
         blanc, blancRempli, blanc, blancRempli, blanc, blancRempli, blanc, blancRempli, blanc, blancRempli,
         blancRempli, blanc, blancRempli, blanc, blancRempli, blanc, blancRempli, blanc, blancRempli, blanc]
-print(listee)
+# print(listee)
 
 def affichage():
     canva.delete('all')
@@ -96,6 +96,10 @@ def clique(event):
     second_diagonal = listee[numero_case_touched - 9]
     third_diagonal = listee[numero_case_touched + 9]
     fourth_diagonal = listee[numero_case_touched + 11]
+    fifth_diagonal = listee[numero_case_touched - 22]
+    sixth_diagonal = listee[numero_case_touched - 18]
+    seventh_diagonal = listee[numero_case_touched + 18]
+    eighth_diagonal = listee[numero_case_touched + 22]
 
     if first_diagonal == noir or second_diagonal == noir or third_diagonal == noir or fourth_diagonal == noir:
         canMove = True
@@ -115,13 +119,30 @@ def clique(event):
             listee[numero_case_touched + 9] = demi_Blanc
         if fourth_diagonal == noir and listee[numero_case_touched] == blancRempli:
             listee[numero_case_touched + 11] = demi_Blanc
+        if first_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+            listee[numero_case_touched - 22] = demi_Blanc
+        if second_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+            listee[numero_case_touched - 18] = demi_Blanc
+        if third_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+            listee[numero_case_touched + 18] = demi_Blanc
+        if fourth_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+            listee[numero_case_touched + 22] = demi_Blanc
         if listee[numero_case_touched] == demi_Blanc:
             listee[numero_case_touched] = blancRempli
             for i in range(len(listee)):
                 if listee[i] == demi_Blanc:
                     listee[i] = noir
+            if a_supprimer - numero_case_touched == 18:
+                listee[numero_case_touched + 9] = noir
+            if a_supprimer - numero_case_touched == 22:
+                listee[numero_case_touched + 11] = noir
+            if numero_case_touched - a_supprimer == 22:
+                listee[numero_case_touched - 11] = noir
+            if numero_case_touched - a_supprimer == 18:
+                listee[numero_case_touched - 9] = noir
             listee[a_supprimer] = noir
             white = False
+        
     else:
         # print(x, y, canMove, listee[numero_case_touched], white, black)
         if listee[numero_case_touched] == noirRempli:
@@ -134,13 +155,28 @@ def clique(event):
             listee[numero_case_touched + 9] = demi_Noir
         if fourth_diagonal == noir and listee[numero_case_touched] == noirRempli:
             listee[numero_case_touched + 11] = demi_Noir
+        if first_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+            listee[numero_case_touched - 22] = demi_Noir
+        if second_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+            listee[numero_case_touched - 18] = demi_Noir
+        if third_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+            listee[numero_case_touched + 18] = demi_Noir
+        if fourth_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+            listee[numero_case_touched + 22] = demi_Noir
         if listee[numero_case_touched] == demi_Noir:
             listee[numero_case_touched] = noirRempli
             for i in range(len(listee)):
                 if listee[i] == demi_Noir:
                     listee[i] = noir
+            if a_supprimer - numero_case_touched == 18:
+                listee[numero_case_touched + 9] = noir
+            if a_supprimer - numero_case_touched == 22:
+                listee[numero_case_touched + 11] = noir
+            if numero_case_touched - a_supprimer == 22:
+                listee[numero_case_touched - 11] = noir
+            if numero_case_touched - a_supprimer == 18:
+                listee[numero_case_touched - 9] = noir
             listee[a_supprimer] = noir
-            black = False
             white = True
     affichage()
     # canva.create_oval(x-3, y-3, x+3, y+3, fill='red', outline='')
