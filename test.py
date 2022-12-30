@@ -22,7 +22,8 @@ blanc = PhotoImage(file="Dames-Blanc_Vide.png")
 noir = PhotoImage(file="Dames-Noir_Vide.png")
 demi_Blanc = PhotoImage(file="demi_Blanc.png")
 demi_Noir = PhotoImage(file="demi_Noir.png")
-dico_lignee = {}
+renne_blanc = PhotoImage(file="Renne-Blanche.png")
+renne_noir = PhotoImage(file="Renne-Noir.png")
 listee = [blanc, noirRempli, blanc, noirRempli, blanc, noirRempli, blanc, noirRempli, blanc, noirRempli, 
         noirRempli, blanc, noirRempli, blanc, noirRempli, blanc, noirRempli, blanc, noirRempli, blanc,
         blanc, noirRempli, blanc, noirRempli, blanc, noirRempli, blanc, noirRempli, blanc, noirRempli, 
@@ -91,93 +92,433 @@ def clique(event):
     x = x // 50 + 1
     y = y // 50 + 1
     numero_case_touched = (10 * (y - 1) + x) - 1
-    canMove = False
-    first_diagonal = listee[numero_case_touched - 11]
-    second_diagonal = listee[numero_case_touched - 9]
-    third_diagonal = listee[numero_case_touched + 9]
-    fourth_diagonal = listee[numero_case_touched + 11]
-    fifth_diagonal = listee[numero_case_touched - 22]
-    sixth_diagonal = listee[numero_case_touched - 18]
-    seventh_diagonal = listee[numero_case_touched + 18]
-    eighth_diagonal = listee[numero_case_touched + 22]
 
-    if first_diagonal == noir or second_diagonal == noir or third_diagonal == noir or fourth_diagonal == noir:
-        canMove = True
-    else:
+    if numero_case_touched >= 12 and numero_case_touched < 89:
         canMove = False
-    
-    if white == True:
-        # print(x, y, canMove, listee[numero_case_touched], white, black)
-        if listee[numero_case_touched] == blancRempli:
-            global a_supprimer 
-            a_supprimer = numero_case_touched
-        if first_diagonal == noir and listee[numero_case_touched] == blancRempli:
-            listee[numero_case_touched - 11] = demi_Blanc
-        if second_diagonal == noir and listee[numero_case_touched] == blancRempli:
-            listee[numero_case_touched - 9] = demi_Blanc
-        if third_diagonal == noir and listee[numero_case_touched] == blancRempli:
-            listee[numero_case_touched + 9] = demi_Blanc
-        if fourth_diagonal == noir and listee[numero_case_touched] == blancRempli:
-            listee[numero_case_touched + 11] = demi_Blanc
-        if first_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
-            listee[numero_case_touched - 22] = demi_Blanc
-        if second_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
-            listee[numero_case_touched - 18] = demi_Blanc
-        if third_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
-            listee[numero_case_touched + 18] = demi_Blanc
-        if fourth_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
-            listee[numero_case_touched + 22] = demi_Blanc
-        if listee[numero_case_touched] == demi_Blanc:
-            listee[numero_case_touched] = blancRempli
-            for i in range(len(listee)):
-                if listee[i] == demi_Blanc:
-                    listee[i] = noir
-            if a_supprimer - numero_case_touched == 18:
-                listee[numero_case_touched + 9] = noir
-            if a_supprimer - numero_case_touched == 22:
-                listee[numero_case_touched + 11] = noir
-            if numero_case_touched - a_supprimer == 22:
-                listee[numero_case_touched - 11] = noir
-            if numero_case_touched - a_supprimer == 18:
-                listee[numero_case_touched - 9] = noir
-            listee[a_supprimer] = noir
-            white = False
-        
-    else:
-        # print(x, y, canMove, listee[numero_case_touched], white, black)
-        if listee[numero_case_touched] == noirRempli:
-            a_supprimer = numero_case_touched
-        if first_diagonal == noir and listee[numero_case_touched] == noirRempli:
-            listee[numero_case_touched - 11] = demi_Noir
-        if second_diagonal == noir and listee[numero_case_touched] == noirRempli:
-            listee[numero_case_touched - 9] = demi_Noir
-        if third_diagonal == noir and listee[numero_case_touched] == noirRempli:
-            listee[numero_case_touched + 9] = demi_Noir
-        if fourth_diagonal == noir and listee[numero_case_touched] == noirRempli:
-            listee[numero_case_touched + 11] = demi_Noir
-        if first_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
-            listee[numero_case_touched - 22] = demi_Noir
-        if second_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
-            listee[numero_case_touched - 18] = demi_Noir
-        if third_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
-            listee[numero_case_touched + 18] = demi_Noir
-        if fourth_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
-            listee[numero_case_touched + 22] = demi_Noir
-        if listee[numero_case_touched] == demi_Noir:
-            listee[numero_case_touched] = noirRempli
-            for i in range(len(listee)):
-                if listee[i] == demi_Noir:
-                    listee[i] = noir
-            if a_supprimer - numero_case_touched == 18:
-                listee[numero_case_touched + 9] = noir
-            if a_supprimer - numero_case_touched == 22:
-                listee[numero_case_touched + 11] = noir
-            if numero_case_touched - a_supprimer == 22:
-                listee[numero_case_touched - 11] = noir
-            if numero_case_touched - a_supprimer == 18:
-                listee[numero_case_touched - 9] = noir
-            listee[a_supprimer] = noir
-            white = True
+        first_diagonal = listee[numero_case_touched - 11]
+        second_diagonal = listee[numero_case_touched - 9]
+        third_diagonal = listee[numero_case_touched + 9]
+        fourth_diagonal = listee[numero_case_touched + 11]
+        # fifth_diagonal = listee[numero_case_touched - 22]
+        # sixth_diagonal = listee[numero_case_touched - 18]
+        # seventh_diagonal = listee[numero_case_touched + 18]
+        # eighth_diagonal = listee[numero_case_touched + 22]
+
+        if first_diagonal == noir or second_diagonal == noir or third_diagonal == noir or fourth_diagonal == noir:
+            canMove = True
+        else:
+            canMove = False
+        if white == True:
+            # print(x, y, canMove, listee[numero_case_touched], white, black)
+            if listee[numero_case_touched] == blancRempli:
+                global a_supprimer 
+                a_supprimer = numero_case_touched
+            if first_diagonal == noir and listee[numero_case_touched] == blancRempli:
+                    listee[numero_case_touched - 11] = demi_Blanc
+            if second_diagonal == noir and listee[numero_case_touched] == blancRempli:
+                    listee[numero_case_touched - 9] = demi_Blanc
+            if third_diagonal == noir and listee[numero_case_touched] == blancRempli:
+                    listee[numero_case_touched + 9] = demi_Blanc
+            if fourth_diagonal == noir and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched + 11] = demi_Blanc
+            if first_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched - 22] = demi_Blanc
+            if second_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched - 18] = demi_Blanc
+            if third_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched + 18] = demi_Blanc
+            if fourth_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched + 22] = demi_Blanc
+            if listee[numero_case_touched] == demi_Blanc:
+                listee[numero_case_touched] = blancRempli
+                for i in range(len(listee)):
+                    if listee[i] == demi_Blanc:
+                        listee[i] = noir
+                if a_supprimer - numero_case_touched == 18:
+                    listee[numero_case_touched + 9] = noir
+                if a_supprimer - numero_case_touched == 22:
+                    listee[numero_case_touched + 11] = noir
+                if numero_case_touched - a_supprimer == 22:
+                    listee[numero_case_touched - 11] = noir
+                if numero_case_touched - a_supprimer == 18:
+                    listee[numero_case_touched - 9] = noir
+                listee[a_supprimer] = noir
+                white = False
+        else:
+            # print(x, y, canMove, listee[numero_case_touched], white, black)
+            if listee[numero_case_touched] == noirRempli:
+                a_supprimer = numero_case_touched
+            if listee[numero_case_touched] == noirRempli and (numero_case_touched == 1 or numero_case_touched == 11 or numero_case_touched == 21 or numero_case_touched == 31 or numero_case_touched == 41 or numero_case_touched == 51 or numero_case_touched == 61 or numero_case_touched == 71 or numero_case_touched == 81 or numero_case_touched == 91):
+                listee[numero_case_touched + 18] = blanc
+                print("Bug")
+            if first_diagonal == noir and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched - 11] = demi_Noir
+            if second_diagonal == noir and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched - 9] = demi_Noir
+            if third_diagonal == noir and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched + 9] = demi_Noir
+            if fourth_diagonal == noir and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched + 11] = demi_Noir
+            if first_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched - 22] = demi_Noir
+            if second_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched - 18] = demi_Noir
+            if third_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched + 18] = demi_Noir
+            if fourth_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched + 22] = demi_Noir
+            if listee[numero_case_touched] == demi_Noir:
+                listee[numero_case_touched] = noirRempli
+                for i in range(len(listee)):
+                    if listee[i] == demi_Noir:
+                        listee[i] = noir
+                if a_supprimer - numero_case_touched == 18:
+                    listee[numero_case_touched + 9] = noir
+                if a_supprimer - numero_case_touched == 22:
+                    listee[numero_case_touched + 11] = noir
+                if numero_case_touched - a_supprimer == 22:
+                    listee[numero_case_touched - 11] = noir
+                if numero_case_touched - a_supprimer == 18:
+                    listee[numero_case_touched - 9] = noir
+                listee[a_supprimer] = noir
+                white = True
+    elif numero_case_touched <= 7 and numero_case_touched > 0:
+        canMove = False
+        third_diagonal = listee[numero_case_touched + 9]
+        fourth_diagonal = listee[numero_case_touched + 11]
+        # fifth_diagonal = listee[numero_case_touched - 22]
+        # sixth_diagonal = listee[numero_case_touched - 18]
+        # seventh_diagonal = listee[numero_case_touched + 18]
+        # eighth_diagonal = listee[numero_case_touched + 22]
+
+        if third_diagonal == noir or fourth_diagonal == noir:
+            canMove = True
+        else:
+            canMove = False
+        if white == True:
+            # print(x, y, canMove, listee[numero_case_touched], white, black)
+            if listee[numero_case_touched] == blancRempli:
+                a_supprimer = numero_case_touched
+            if third_diagonal == noir and listee[numero_case_touched] == blancRempli:
+                    listee[numero_case_touched + 9] = demi_Blanc
+            if fourth_diagonal == noir and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched + 11] = demi_Blanc
+            if third_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched + 18] = demi_Blanc
+            if fourth_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched + 22] = demi_Blanc
+            if listee[numero_case_touched] == demi_Blanc:
+                listee[numero_case_touched] = blancRempli
+                for i in range(len(listee)):
+                    if listee[i] == demi_Blanc:
+                        listee[i] = noir
+                if a_supprimer - numero_case_touched == 18:
+                    listee[numero_case_touched + 9] = noir
+                if a_supprimer - numero_case_touched == 22:
+                    listee[numero_case_touched + 11] = noir
+                if numero_case_touched - a_supprimer == 22:
+                    listee[numero_case_touched - 11] = noir
+                if numero_case_touched - a_supprimer == 18:
+                    listee[numero_case_touched - 9] = noir
+                listee[a_supprimer] = noir
+                white = False
+        else:
+            # print(x, y, canMove, listee[numero_case_touched], white, black)
+            if listee[numero_case_touched] == noirRempli:
+                a_supprimer = numero_case_touched
+            if third_diagonal == noir and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched + 9] = demi_Noir
+            if fourth_diagonal == noir and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched + 11] = demi_Noir
+            if third_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched + 18] = demi_Noir
+            if fourth_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched + 22] = demi_Noir
+            if listee[numero_case_touched] == demi_Noir:
+                listee[numero_case_touched] = noirRempli
+                for i in range(len(listee)):
+                    if listee[i] == demi_Noir:
+                        listee[i] = noir
+                if a_supprimer - numero_case_touched == 18:
+                    listee[numero_case_touched + 9] = noir
+                if a_supprimer - numero_case_touched == 22:
+                    listee[numero_case_touched + 11] = noir
+                if numero_case_touched - a_supprimer == 22:
+                    listee[numero_case_touched - 11] = noir
+                if numero_case_touched - a_supprimer == 18:
+                    listee[numero_case_touched - 9] = noir
+                listee[a_supprimer] = noir
+                white = True
+    elif numero_case_touched == 9:
+        canMove = False
+        third_diagonal = listee[numero_case_touched + 9]
+
+        if third_diagonal == noir:
+            canMove = True
+        else:
+            canMove = False
+        if white == True:
+            # print(x, y, canMove, listee[numero_case_touched], white, black)
+            if listee[numero_case_touched] == blancRempli:
+                a_supprimer = numero_case_touched
+            if third_diagonal == noir and listee[numero_case_touched] == blancRempli:
+                    listee[numero_case_touched + 9] = demi_Blanc
+            if third_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched + 18] = demi_Blanc
+            if listee[numero_case_touched] == demi_Blanc:
+                listee[numero_case_touched] = blancRempli
+                for i in range(len(listee)):
+                    if listee[i] == demi_Blanc:
+                        listee[i] = noir
+                # if a_supprimer - numero_case_touched == 18:
+                #     listee[numero_case_touched + 9] = noir
+                if numero_case_touched - a_supprimer == 18:
+                    listee[numero_case_touched - 9] = noir
+                listee[a_supprimer] = noir
+                white = False
+        else:
+            # print(x, y, canMove, listee[numero_case_touched], white, black)
+            if listee[numero_case_touched] == noirRempli:
+                a_supprimer = numero_case_touched
+            if third_diagonal == noir and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched + 9] = demi_Noir
+            if third_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched + 18] = demi_Noir
+            if listee[numero_case_touched] == demi_Noir:
+                listee[numero_case_touched] = noirRempli
+                for i in range(len(listee)):
+                    if listee[i] == demi_Noir:
+                        listee[i] = noir
+                # if a_supprimer - numero_case_touched == 18:
+                #     listee[numero_case_touched + 9] = noir
+                if numero_case_touched - a_supprimer == 18:
+                    listee[numero_case_touched - 9] = noir
+                listee[a_supprimer] = noir
+                white = True
+    elif numero_case_touched == 90:
+        canMove = False
+        second_diagonal = listee[numero_case_touched - 9]
+
+        if second_diagonal == noir:
+            canMove = True
+        else:
+            canMove = False
+        if white == True:
+            # print(x, y, canMove, listee[numero_case_touched], white, black)
+            if listee[numero_case_touched] == blancRempli:
+                a_supprimer = numero_case_touched
+            if second_diagonal == noir and listee[numero_case_touched] == blancRempli:
+                    listee[numero_case_touched - 9] = demi_Blanc
+            if second_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched - 18] = demi_Blanc
+            if listee[numero_case_touched] == demi_Blanc:
+                listee[numero_case_touched] = blancRempli
+                for i in range(len(listee)):
+                    if listee[i] == demi_Blanc:
+                        listee[i] = noir
+                if a_supprimer - numero_case_touched == 18:
+                    listee[numero_case_touched + 9] = noir
+                listee[a_supprimer] = noir
+                white = False
+        else:
+            # print(x, y, canMove, listee[numero_case_touched], white, black)
+            if listee[numero_case_touched] == noirRempli:
+                a_supprimer = numero_case_touched
+            if second_diagonal == noir and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched - 9] = demi_Noir
+            if second_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched - 18] = demi_Noir
+            if listee[numero_case_touched] == demi_Noir:
+                listee[numero_case_touched] = noirRempli
+                for i in range(len(listee)):
+                    if listee[i] == demi_Noir:
+                        listee[i] = noir
+                if a_supprimer - numero_case_touched == 18:
+                    listee[numero_case_touched + 9] = noir
+                listee[a_supprimer] = noir
+                white = True
+    elif numero_case_touched < 99 and numero_case_touched >= 92:
+        canMove = False
+        first_diagonal = listee[numero_case_touched - 11]
+        second_diagonal = listee[numero_case_touched - 9]
+
+        if first_diagonal == noir or second_diagonal == noir:
+            canMove = True
+        else:
+            canMove = False
+        if white == True:
+            # print(x, y, canMove, listee[numero_case_touched], white, black)
+            if listee[numero_case_touched] == blancRempli:
+                a_supprimer = numero_case_touched
+            if first_diagonal == noir and listee[numero_case_touched] == blancRempli:
+                    listee[numero_case_touched - 11] = demi_Blanc
+            if second_diagonal == noir and listee[numero_case_touched] == blancRempli:
+                    listee[numero_case_touched - 9] = demi_Blanc
+            if first_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched - 22] = demi_Blanc
+            if second_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched - 18] = demi_Blanc
+            if listee[numero_case_touched] == demi_Blanc:
+                listee[numero_case_touched] = blancRempli
+                for i in range(len(listee)):
+                    if listee[i] == demi_Blanc:
+                        listee[i] = noir
+                if numero_case_touched - a_supprimer == 22:
+                    listee[numero_case_touched - 11] = noir
+                if numero_case_touched - a_supprimer == 18:
+                    listee[numero_case_touched - 9] = noir
+                listee[a_supprimer] = noir
+                white = False
+        else:
+            # print(x, y, canMove, listee[numero_case_touched], white, black)
+            if listee[numero_case_touched] == noirRempli:
+                a_supprimer = numero_case_touched
+            if first_diagonal == noir and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched - 11] = demi_Noir
+            if second_diagonal == noir and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched - 9] = demi_Noir
+            if first_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched - 22] = demi_Noir
+            if second_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched - 18] = demi_Noir
+            if listee[numero_case_touched] == demi_Noir:
+                listee[numero_case_touched] = noirRempli
+                for i in range(len(listee)):
+                    if listee[i] == demi_Noir:
+                        listee[i] = noir
+                if a_supprimer - numero_case_touched == 18:
+                    listee[numero_case_touched + 9] = noir
+                if a_supprimer - numero_case_touched == 22:
+                    listee[numero_case_touched + 11] = noir
+                if numero_case_touched - a_supprimer == 22:
+                    listee[numero_case_touched - 11] = noir
+                if numero_case_touched - a_supprimer == 18:
+                    listee[numero_case_touched - 9] = noir
+                listee[a_supprimer] = noir
+                white = True
+    elif numero_case_touched == 10:
+        canMove = False
+        second_diagonal = listee[numero_case_touched - 9]
+        fourth_diagonal = listee[numero_case_touched + 11]
+        # fifth_diagonal = listee[numero_case_touched - 22]
+        # sixth_diagonal = listee[numero_case_touched - 18]
+        # seventh_diagonal = listee[numero_case_touched + 18]
+        # eighth_diagonal = listee[numero_case_touched + 22]
+
+        if second_diagonal == noir or fourth_diagonal == noir:
+            canMove = True
+        else:
+            canMove = False
+        if white == True:
+            # print(x, y, canMove, listee[numero_case_touched], white, black)
+            if listee[numero_case_touched] == blancRempli: 
+                a_supprimer = numero_case_touched
+            if second_diagonal == noir and listee[numero_case_touched] == blancRempli:
+                    listee[numero_case_touched - 9] = demi_Blanc
+            if fourth_diagonal == noir and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched + 11] = demi_Blanc
+            if second_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched - 18] = demi_Blanc
+            if fourth_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched + 22] = demi_Blanc
+            if listee[numero_case_touched] == demi_Blanc:
+                listee[numero_case_touched] = blancRempli
+                for i in range(len(listee)):
+                    if listee[i] == demi_Blanc:
+                        listee[i] = noir
+                if numero_case_touched - a_supprimer == 22:
+                    listee[numero_case_touched - 11] = noir
+                listee[a_supprimer] = noir
+                white = False
+        else:
+            # print(x, y, canMove, listee[numero_case_touched], white, black)
+            if listee[numero_case_touched] == noirRempli:
+                a_supprimer = numero_case_touched
+            if listee[numero_case_touched] == noirRempli and (numero_case_touched == 1 or numero_case_touched == 11 or numero_case_touched == 21 or numero_case_touched == 31 or numero_case_touched == 41 or numero_case_touched == 51 or numero_case_touched == 61 or numero_case_touched == 71 or numero_case_touched == 81 or numero_case_touched == 91):
+                listee[numero_case_touched + 18] = blanc
+                print("Bug")
+            if second_diagonal == noir and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched - 9] = demi_Noir
+            if fourth_diagonal == noir and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched + 11] = demi_Noir
+            if second_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched - 18] = demi_Noir
+            if fourth_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched + 22] = demi_Noir
+            if listee[numero_case_touched] == demi_Noir:
+                listee[numero_case_touched] = noirRempli
+                for i in range(len(listee)):
+                    if listee[i] == demi_Noir:
+                        listee[i] = noir
+                if numero_case_touched - a_supprimer == 22:
+                    listee[numero_case_touched - 11] = noir
+                listee[a_supprimer] = noir
+                white = True
+    elif numero_case_touched == 89:
+        canMove = False
+        first_diagonal = listee[numero_case_touched - 11]
+        third_diagonal = listee[numero_case_touched + 9]
+        # fifth_diagonal = listee[numero_case_touched - 22]
+        # sixth_diagonal = listee[numero_case_touched - 18]
+        # seventh_diagonal = listee[numero_case_touched + 18]
+        # eighth_diagonal = listee[numero_case_touched + 22]
+
+        if first_diagonal == noir or third_diagonal == noir:
+            canMove = True
+        else:
+            canMove = False
+        if white == True:
+            # print(x, y, canMove, listee[numero_case_touched], white, black)
+            if listee[numero_case_touched] == blancRempli:
+                a_supprimer = numero_case_touched
+            if first_diagonal == noir and listee[numero_case_touched] == blancRempli:
+                    listee[numero_case_touched - 11] = demi_Blanc
+            if third_diagonal == noir and listee[numero_case_touched] == blancRempli:
+                    listee[numero_case_touched + 9] = demi_Blanc
+            if first_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched - 22] = demi_Blanc
+            if third_diagonal == noirRempli and listee[numero_case_touched] == blancRempli:
+                listee[numero_case_touched + 18] = demi_Blanc
+            if listee[numero_case_touched] == demi_Blanc:
+                listee[numero_case_touched] = blancRempli
+                for i in range(len(listee)):
+                    if listee[i] == demi_Blanc:
+                        listee[i] = noir
+                if a_supprimer - numero_case_touched == 22:
+                    listee[numero_case_touched + 11] = noir
+                listee[a_supprimer] = noir
+                white = False
+        else:
+            # print(x, y, canMove, listee[numero_case_touched], white, black)
+            if listee[numero_case_touched] == noirRempli:
+                a_supprimer = numero_case_touched
+            if listee[numero_case_touched] == noirRempli and (numero_case_touched == 1 or numero_case_touched == 11 or numero_case_touched == 21 or numero_case_touched == 31 or numero_case_touched == 41 or numero_case_touched == 51 or numero_case_touched == 61 or numero_case_touched == 71 or numero_case_touched == 81 or numero_case_touched == 91):
+                listee[numero_case_touched + 18] = blanc
+                print("Bug")
+            if first_diagonal == noir and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched - 11] = demi_Noir
+            if third_diagonal == noir and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched + 9] = demi_Noir
+            if first_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched - 22] = demi_Noir
+            if third_diagonal == blancRempli and listee[numero_case_touched] == noirRempli:
+                listee[numero_case_touched + 18] = demi_Noir
+            if listee[numero_case_touched] == demi_Noir:
+                listee[numero_case_touched] = noirRempli
+                for i in range(len(listee)):
+                    if listee[i] == demi_Noir:
+                        listee[i] = noir
+                if a_supprimer - numero_case_touched == 18:
+                    listee[numero_case_touched + 9] = noir
+                if a_supprimer - numero_case_touched == 22:
+                    listee[numero_case_touched + 11] = noir
+                if numero_case_touched - a_supprimer == 22:
+                    listee[numero_case_touched - 11] = noir
+                if numero_case_touched - a_supprimer == 18:
+                    listee[numero_case_touched - 9] = noir
+                listee[a_supprimer] = noir
+                white = True
+
     affichage()
     # canva.create_oval(x-3, y-3, x+3, y+3, fill='red', outline='')
 
